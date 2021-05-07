@@ -1,0 +1,81 @@
+#!/usr/bin/env python3.9
+
+"""
+Hack script to work around performance issues by uploading files to the LFS
+server with rsync.
+"""
+import re
+import subprocess
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+from functools import cache
+from os import fspath
+from pathlib import Path
+
+# Having these not be command-line options lets us skip adding validation code
+# that’ll make sure they work when substituted directly into shell commands.
+LFS_STORAGE = "/data/lfs/storage"
+LFS_INCOMING = "/data/lfs/incoming"
+LFS_HOST = "lfs.altlab.dev"
+
+
+def main():
+    parser = ArgumentParser(
+        description=__doc__, formatter_class=ArgumentDefaultsHelpFormatter
+    )
+    parser.add_argument(
+        "--repo",
+        default="UAlbertaALTLab/cree-intelligent-dictionary",
+        help="repo to push to",
+    )
+    parser.add_argument(
+        "oid",
+        help="OID to push. Get it from `git lfs status` or `git lfs push --dry-run $remote $branch`.",
+    )
+    args = parser.parse_args()
+
+    if not re.match(r"^[0-9a-fA-F]{64}$", args.oid):
+        parser.error("oid must be a 64-byte hex string")
+    args.oid = args.oid.lower()
+
+    repo_re = re.compile(r"^[A-Za-z0-9-]+/[A-Za-z0-9-]+$")
+    if not repo_re.match(args.repo):
+        parser.error(f"--repo argument must match {repo_re}")
+
+    file = get_lfs_object_dir() / args.oid[0:2] / args.oid[2:4] / args.oid
+
+    subprocess.check_call(
+        [
+            "rsync",
+            "--info=progress2",
+            fspath(file),
+            f"{LFS_HOST}:{LFS_INCOMING}/{args.oid}",
+        ]
+    )
+    subprocess.check_call(
+        [
+            "ssh",
+            "-t",
+            LFS_HOST,
+            f"""
+                sudo -p '[sudo] password for %p@{LFS_HOST}: ' mv {LFS_INCOMING}/{args.oid} \
+                    {LFS_STORAGE}/{args.repo} \
+                    && sudo chown lfs:lfs {LFS_STORAGE}/{args.repo}/{args.oid}
+            """,
+        ]
+    )
+
+    print("Ok.")
+
+
+@cache
+def get_lfs_object_dir():
+    env = subprocess.check_output(["git", "lfs", "env"]).decode("UTF-8")
+    for line in env.split("\n"):
+        if line.startswith("LocalMediaDir="):
+            dir = line.split("=", maxsplit=1)[1]
+            return Path(dir)
+    raise Exception("could not find LocalMediaDir in `git lfs env` output")
+
+
+if __name__ == "__main__":
+    main()
