@@ -1,10 +1,10 @@
 	| Sg
-_ 1Sg	niya+Pron+Pers+1Sg
-_ 2Sg	kiya+Pron+Pers+2Sg
-_ 3Sg	wiya+Pron+Pers+3Sg
+_ 1Sg	niya
+_ 2Sg	kiya
+_ 3Sg	wiya
 
 	| Pl
-_ 1Pl	niyanân+Pron+Pers+1Pl
-_ 12Pl	kiyânaw+Pron+Pers+12Pl
-_ 2Pl	kiyawâw+Pron+Pers+2Pl
-_ 3Pl	wiyawâw+Pron+Pers+3Pl
+_ 1Pl	niyanân
+_ 12Pl	kiyânaw
+_ 2Pl	kiyawâw
+_ 3Pl	wiyawâw

@@ -1,19 +1,19 @@
 	| A | Sg
-_ Sg _ Prox	awa+Pron+Dem+Prox+A+Sg
-_ Sg _ Med	awa+Pron+Dem+Med+A+Sg
-_ Sg _ Dist	awa+Pron+Dem+Dist+A+Sg
+_ Prox	awa
+_ Med	ana
+_ Dist	nâha
 	
 	| A | Pl
-_ Sg _ Prox	awa+Pron+Dem+Prox+A+Pl
-_ Sg _ Med	awa+Pron+Dem+Med+A+Pl
-_ Sg _ Dist	awa+Pron+Dem+Dist+A+Pl
+_ Prox	ôki
+_ Med	aniki
+_ Dist	nêki
 	
 	| I | Sg
-_ Pl _ Prox	ôma+Pron+Dem+Prox+I+Sg
-_ Pl _ Med	ôma+Pron+Dem+Med+I+Sg
-_ Pl _ Dist	ôma+Pron+Dem+Dist+I+Sg
+_ Prox	ôma
+_ Med	anima
+_ Dist	nêma
 	
 	| I | Pl
-_ Pl _ Prox	ôma+Pron+Dem+Prox+I+Pl
-_ Pl _ Med	ôma+Pron+Dem+Med+I+Pl
-_ Pl _ Dist	ôma+Pron+Dem+Dist+I+Pl
+_ Prox	ôhi
+_ Med	anihi
+_ Dist	nêhi

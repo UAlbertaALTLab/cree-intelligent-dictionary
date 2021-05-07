@@ -7,7 +7,7 @@ from CreeDictionary.paradigm.manager import ParadigmManager
 
 
 def test_generates_personal_pronoun_paradigm(paradigm_manager) -> None:
-    paradigm = paradigm_manager.paradigm_for("niya+Pron+Pers+1Sg")
+    paradigm = paradigm_manager.static_paradigm_for("personal-pronouns")
     assert paradigm is not None
 
     # I don't know how many panes there will be, but the first should DEFINITELY have

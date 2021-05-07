@@ -1,6 +1,7 @@
 import logging
 from http import HTTPStatus
 from typing import Dict, Optional
+from urllib.parse import urlencode
 
 import pytest
 from django.http import (
@@ -10,6 +11,7 @@ from django.http import (
 )
 from django.test import Client
 from django.urls import reverse
+from pytest_django.asserts import assertInHTML
 
 from CreeDictionary.display_options import DISPLAY_MODES
 
@@ -79,6 +81,32 @@ def test_pages_render_without_template_errors(url: str, client: Client, caplog):
 
     template_errors = [log for log in caplog.records if is_template_error(log)]
     assert len(template_errors) == 0
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "lexeme,query,example_forms",
+    [
+        ("niya", {}, ["niyanân", "kiyânaw", "kiyawâw", "wiyawâw"]),
+        ("awa", {"pos": "PRON"}, ["ôma", "awa", "ana"]),
+        ("minôs", {}, ["minôs", "minôsa", "niminôs"]),
+    ],
+)
+def test_retrieve_paradigm(client: Client, lexeme: str, query, example_forms: str):
+    """
+    Test going to the lexeme details page with a paradigm.
+    """
+    url = reverse("cree-dictionary-index-with-lemma", args=[lexeme])
+    if query:
+        url += "?" + urlencode(query)
+    response = client.get(url)
+
+    assert response.status_code == 200
+    body = response.content.decode("UTF-8")
+
+    assertInHTML(lexeme, body)
+    for wordform in example_forms:
+        assertInHTML(wordform, body)
 
 
 @pytest.mark.parametrize("mode", DISPLAY_MODES)

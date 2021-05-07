@@ -16,6 +16,7 @@ from CreeDictionary.paradigm.panes import (
     InflectionTemplate,
     MissingForm,
     Pane,
+    ParadigmIsNotStaticError,
     ParadigmLayout,
     RowLabel,
     WordformCell,
@@ -57,13 +58,25 @@ def test_parse_demonstrative_pronoun_paradigm(pronoun_paradigm_path: Path):
     production site... buuuuuuuuut, it's useful as a test fixture!
     """
     with pronoun_paradigm_path.open(encoding="UTF-8") as layout_file:
-        pronoun_paradigm = ParadigmLayout.load(layout_file)
+        pronoun_paradigm_layout = ParadigmLayout.load(layout_file)
+
+    pronoun_paradigm = pronoun_paradigm_layout.as_static_paradigm()
 
     assert count(pronoun_paradigm.panes) == 1
 
     basic_pane = first(pronoun_paradigm.panes)
     assert basic_pane.num_columns == 3
     assert count(basic_pane.rows) == 4
+
+
+def test_as_static_paradigm_raises_on_dynamic_paradigm():
+    dynamic_layout = ParadigmLayout.loads("_ Prox\t${lemma}+Pron+I+Prox+Sg\n")
+    static_layout = ParadigmLayout.loads("_ Prox\tôma\n")
+
+    assert static_layout.as_static_paradigm()
+
+    with pytest.raises(ParadigmIsNotStaticError):
+        dynamic_layout.as_static_paradigm()
 
 
 def test_dump_equal_to_file_on_disk(na_layout_path: Path):
@@ -93,13 +106,8 @@ def test_wordform_cell():
 
     assert cell.contains_wordform(wordform)
 
-    # It cannot be filled in — it's already filled in!
-    with pytest.raises(AssertionError):
-        cell.fill_one({})
-
-    # It should never be parsed from a layout
-    with pytest.raises(AssertionError):
-        WordformCell.parse(wordform)
+    # Trying to fill a cell returns the same cell back:
+    assert cell == cell.fill_one({})
 
 
 def sample_pane():
@@ -120,7 +128,7 @@ def sample_pane():
         EmptyCell(),
         MissingForm(),
         InflectionTemplate("${lemma}+N+A+Sg"),
-        InflectionTemplate("ôma+Pron+Dem+Prox+I+Sg"),
+        WordformCell("ôma"),
         ColumnLabel(("Sg",)),
         RowLabel(("1Sg",)),
         HeaderRow(("Imp",)),

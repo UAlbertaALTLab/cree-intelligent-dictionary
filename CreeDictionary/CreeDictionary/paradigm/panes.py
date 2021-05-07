@@ -11,10 +11,9 @@ from functools import cached_property
 from itertools import zip_longest
 from typing import Collection, Iterable, Optional, TextIO
 
-from more_itertools import first
+from more_itertools import first, ilen
 
 logger = logging.getLogger(__name__)
-
 
 class ParseError(Exception):
     """
@@ -25,6 +24,12 @@ class ParseError(Exception):
 class ParadigmGenerationError(Exception):
     """
     Raised when there's some issue with generating/filling a paradigm.
+    """
+
+class ParadigmIsNotStaticError(Exception):
+    """
+    Raised when calling .as_static_paradigm() on a layout with unfilled
+    placeholders (i.e., on a dynamic paradigm).
     """
 
 
@@ -138,6 +143,17 @@ class ParadigmLayout(Paradigm):
         paradigm with all its InflectionTemplate cells replaced with WordformCells.
         """
         return Paradigm(pane.fill(forms) for pane in self.panes)
+
+    def as_static_paradigm(self) -> Paradigm:
+        """
+        Returns a Paradigm that can be rendered without having to explicitly fill it.
+        
+        :raises ParadigmIsNotStaticError: when called on a dynamic paradigm
+        """
+        if ilen(self.inflection_cells) > 0:
+            raise ParadigmIsNotStaticError("not a static paradigm; contains "
+                                           "inflection templates")
+        return self.fill({})
 
     def __str__(self):
         return self.dumps()
@@ -376,8 +392,10 @@ class Cell:
             return RowLabel.parse(text)
         elif text.startswith("| "):
             return ColumnLabel.parse(text)
-        else:
+        elif looks_like_analysis_string(text):
             return InflectionTemplate.parse(text)
+        else:
+            return WordformCell.parse(text)
 
     def contains_wordform(self, wordform: str) -> bool:
         if not self.is_inflection:
@@ -404,8 +422,8 @@ class WordformCell(Cell):
     called, converting all its InflectionTemplate instances to WordformCell instances.
 
     How this differs between **static** and **dynamic** paradigms:
-     - **static** paradigms still have InflectionTemplate instances; however, an entire
-       static paradigm can be filled once and be reused every subsequent time.
+     - **static** paradigms contain ZERO InflectionCell instances; they will all be
+        WordformCell instances.
      - **dynamic** paradigms must be filled for every unique FST lemma.
     """
 
@@ -418,7 +436,8 @@ class WordformCell(Cell):
         return self.inflection == wordform
 
     def fill_one(self, forms: dict[str, Collection[str]]) -> Cell:
-        raise AssertionError(f"Cannot fill a cell that already has content: {self}")
+        # No need to fill a cell that already has contents!
+        return self
 
     def __str__(self) -> str:
         return self.inflection
@@ -434,9 +453,8 @@ class WordformCell(Cell):
 
     @classmethod
     def parse(cls, text: str):
-        raise AssertionError(
-            "A literal wordform can never be parsed from directly " "from a layout"
-        )
+        assert not looks_like_analysis_string(text)
+        return cls(text)
 
 
 class InflectionTemplate(Cell):
@@ -592,7 +610,7 @@ def looks_like_analysis_string(text: str) -> bool:
     """
     Returns true if the cell might be analysis.
     """
-    return "${lemma}" in text or "+" in text
+    return "${lemma}" in text
 
 
 def pairs(seq):

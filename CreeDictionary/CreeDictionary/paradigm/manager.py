@@ -18,18 +18,17 @@ class ParadigmManager:
     """
 
     def __init__(self, layout_directory: Path, generation_fst: TransducerFile):
-        # TODO: technically str == ConcatAnalysis
-        self._analysis_to_layout: dict[str, ParadigmLayout] = {}
-        self._load_static_from(layout_directory / "static")
         self._generator = generation_fst
+        self._name_to_layout: dict[str, Paradigm] = {}
 
-    def paradigm_for(self, analysis: str) -> Optional[Paradigm]:
+        self._load_static_from(layout_directory / "static")
+
+    def static_paradigm_for(self, name: str) -> Optional[Paradigm]:
         """
-        Given an analysis, returns its paradigm.
+        Returns a static paradigm with the given name.
+        Returns None if there is no paradigm with such a name.
         """
-        if layout := self._analysis_to_layout.get(analysis):
-            return self._inflect(layout)
-        return None
+        return self._name_to_layout.get(name)
 
     def _load_static_from(self, path: Path):
         """
@@ -38,9 +37,7 @@ class ParadigmManager:
 
         for layout_file in path.glob("*.tsv"):
             layout = ParadigmLayout.loads(layout_file.read_text(encoding="UTF-8"))
-
-            for inflection in layout.inflection_cells:
-                self._analysis_to_layout[inflection.analysis] = layout
+            self._name_to_layout[layout_file.stem] = layout.as_static_paradigm()
 
     def _inflect(self, layout: ParadigmLayout) -> Paradigm:
         analyses = layout.generate_fst_analysis_string(lemma="").splitlines(

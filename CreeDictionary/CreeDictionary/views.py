@@ -1,3 +1,4 @@
+import logging
 from http import HTTPStatus
 from typing import Any, Dict, Literal, Union
 
@@ -22,6 +23,8 @@ from .utils import url_for_query
 # The index template expects to be rendered in the following "modes";
 # The mode dictates which variables MUST be present in the context.
 IndexPageMode = Literal["home-page", "search-page", "word-detail", "info-page"]
+
+logger = logging.getLogger(__name__)
 
 # "pragma: no cover" works with coverage.
 # It excludes the clause or line (could be a function/class/if else block) from coverage
@@ -59,13 +62,7 @@ def lemma_details(request, lemma_text: str):
 
     lemma = lemma.get()
     paradigm_size = ParadigmSize.from_string(request.GET.get("paradigm-size"))
-
-    # TODO: make this use the ParadigmManager exclusively
-    paradigm: Union[Paradigm, list[list[Row]]]
-    if new_style_paradigm := default_paradigm_manager().paradigm_for(lemma.analysis):
-        paradigm = new_style_paradigm
-    else:
-        paradigm = generate_paradigm(lemma, paradigm_size)
+    paradigm = paradigm_for(lemma, paradigm_size)
 
     context = create_context_for_index_template(
         "word-detail",
@@ -326,3 +323,28 @@ def disambiguating_filter_from_query_params(query_params: dict[str, str]):
         "id",
     }
     return {key: query_params[key] for key in keys_present}
+
+
+def paradigm_for(
+    lemma: Wordform, paradigm_size: ParadigmSize
+) -> Union[Paradigm, list[list[Row]]]:
+    """
+    Returns a paradigm for the given wordform at the desired size.
+
+    If a paradigm cannot be found, an empty list is returned
+    """
+    # TODO: make this use the new-style ParadigmManager exclusively
+
+    if name := lemma.paradigm:
+        if static_paradigm := default_paradigm_manager().static_paradigm_for(name):
+            return static_paradigm
+        logger.warning(
+            "Could not retrieve static paradigm %r " "associated with wordform %r",
+            name,
+            lemma,
+        )
+        # TODO: better return value for when a paradigm cannot be found
+        return []
+
+    # try returning an old-style paradigm: may return []
+    return generate_paradigm(lemma, paradigm_size)
