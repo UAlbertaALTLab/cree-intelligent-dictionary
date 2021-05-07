@@ -52,9 +52,10 @@ A type of [inflectional category][] for the verb word class.
 
 conjugator
 ==========
-[conjugator]: #conjugator
 
 (_informal_) a tool that generates a [paradigm][].
+
+[conjugator]: #conjugator
 
 N.B.: people ask for a conjugator, even when asking to generate noun
 wordform!
@@ -118,7 +119,7 @@ derived form
 [derived form]: #derived-form
 [derived forms]: #derived-form
 
-A new [wordform] created from a [lemma]; this new wordform has a separate lemma with its own [inflectional paradigm]. A derived wordform can belong to a different [word class] than the original source stem.
+A new [wordform] created from a [lemma]; this new wordform has a separate lemma with its own [inflectional paradigm][paradigm]. A derived wordform can belong to a different [word class] than the original source stem.
 
 ## Part of
 
@@ -151,6 +152,12 @@ Contains
 -   **1** or more [definitions][]
 -   **1** [word class][], if the [head][] is a [word form][]
 
+See also
+-------
+
+-  [source language][]
+-  [target language][]
+
 
 dictionary source
 =================
@@ -171,11 +178,12 @@ or a publication.
 
 indeclinable particle
 =====================
-[indeclinable particle]: #indeclinable-particle
-[Ipc]: #indeclinable-particle
 
-(In Plains Cree linguistics) The word class of [terms][] that do not
-[inflect][]. Often abbreviated as [Ipc].
+(In Plains Cree linguistics) The word class of terms that do not
+inflect. Often abbreviated as [Ipc][].
+
+[Ipc]: #indeclinable-particle
+[indeclinable particle]: #indeclinable-particle
 
 Is a
 ----
@@ -189,8 +197,6 @@ inflectional category
 [inflectional class]: #inflectional-class
 [inflectional categories]: #inflectional-category
 
-> also, _inflectional class_
-
 A more detailed categorization of a [word class][].
 Things that belong to the same inflection category have the same
 affix set.
@@ -202,6 +208,8 @@ Examples
 -   VTA-n
 -   NDA-4w
 
+> ⚠️  **A deprecated synonym exists** — This was formerly also called an
+> *inflectional class*, but that term is now deprecated.
 
 inflectional paradigm
 ======================
@@ -223,12 +231,10 @@ general word class
 =====================
 [general word class]: #general-word-class
 
-Superclass of [word class][]. Does not contain
-[inflectional categories][]. Similar
-to [part of speech][].
+Superclass of [word class][]. Does not contain [inflectional categories][].
 
 General word classes are are not detailed
-enough to tell you how its members [inflect]. A [specific word class][], on the
+enough to tell you how its members [inflect]. A [word class][], on the
 other hand, tells you enough to be able to [inflect].
 
 Consists of
@@ -239,8 +245,9 @@ Consists of
 In Plains Cree
 --------------
 
-* Noun — use the four word classes instead: [NI], [NA], [NID], [NAD]
-* Verb — use the four word classes instead: [VII], [VAI], [VTI], [VTA]
+* Noun — contains the word classes: [NI], [NA], [NID], [NAD]
+* Verb — contains the word classes: [VII], [VAI], [VTI], [VTA]
+* Indeclinable particle
 
 
 gloss
@@ -259,16 +266,22 @@ specific and less "fluent" than a [translation][].
 head
 ====
 [head]: #head
+[heads]: #head
 
 The highest level structure of a [dictionary][].
 Each head is listed alphabetically (with derivations (phrases on the
-[wordform][]) coming after the \'root\' listing).
+[wordform][]) coming after the 'root' listing).
 
+inflected form
+==============
+[inflect]: #inflect
+[inflected form]: #inflected-form
+[inflected forms]: #inflected-form
+
+???
 
 lacuna
 ======
-[lacuna]: #lacuna
-[lacunae]: #lacuna
 
 "Gaps" in a [paradigm]. Any form that does not exist in a paradigm. For
 example, the English word “pants”:
@@ -277,6 +290,8 @@ example, the English word “pants”:
 |:-:|:--------:|:------:|
 |   |     —    | pants  |
 
+[lacuna]: #lacuna
+[lacunae]: #lacuna
 
 Pants doesn't have a singular form! There's “pant leg”, but no “\*pant”
 This is a **lacuna**: a gap in the paradigm, where you would otherwise
@@ -296,17 +311,32 @@ representation of the paradigm. Often the least structurally and
 semantically marked form.  Unlike a [stem] or [root], a lemma is always
 a valid [word form].
 
+In a dictionary, the definitions of a lemma implicitly provide definitions for
+the inflected forms of the lemma.
+
+> ⚠️ **FIXME** — in itwêwina, we have been associating additional definitions
+> with non-lemma wordforms. This is somewhat at odds with typical linguistic
+> usage, where a lemma is the canonical form of a lexeme. Then, providing a
+> definition for a wordform implies that the wordform is its own lexeme.
+
 If a term is defined in a dictionary, its [head] will be the lemma.
 e.g., you might not find a definition for "smartphones" in a dictionary of
 contemporary English; instead, you'll find a definition for
 "smartphone" (the lemma), and "smartphones" is one of its [inflected
-forms]. However, non-lemma forms may also be [heads] in a dictionary,
+forms]. However, non-lemma wordforms may also be [heads] in a dictionary,
 depending on context.
 
 ### Part of
 
 * **1** or more [word form]
 * **1** [head]
+
+lexeme
+=====
+
+A related set of wordforms.
+
+Other sources may also call this a lexical entry or lexical item.
 
 meaning
 ========
@@ -326,6 +356,7 @@ broken down into any subsequent parts, without changing its meaning.
 morphosyntactic feature
 =======================
 [morphosyntactic feature]: #morphosyntactic-feature
+[morphosyntactic features]: #morphosyntactic-feature
 
 ???
 
@@ -366,6 +397,7 @@ See also: [standardize][]
 orthographical representation
 =============================
 [orthographical representation]: #orthographical-representation
+[orthographical representations]: #orthographical-representation
 
 ???
 
@@ -395,11 +427,11 @@ part of speech
 ==============
 [part of speech]: #part-of-speech
 
-> ⚠️  **Deprecated** — use [specific word class][] instead.
+> ⚠️  **Deprecated** — use [word class][] instead.
 
 The grammatical category to which a [term][] belongs.
 Different parts of speech have different functions in a
-[clause][].
+clause.
 
 Part of
 -------
@@ -447,6 +479,20 @@ _children_.
    imperative form)
 
 
+source language
+===============
+[source language]: #source-language
+
+In a unidirectional bilingual dictionary, the language of the [head][]
+words.
+
+Example: in *Cree: Words*, which gives a list of Cree [head][] words
+with all [definitions][] being English [translations][], the source
+language is Cree.
+
+See also: [target language][].
+
+
 standardize
 ===========
 [standardize]: #standardize
@@ -476,7 +522,7 @@ In the Plains Cree FST, these tags either end with a `+` for prefixes (e.g.,
 `+V`).
 
  - General word class: `+V`, `+N`, `+Ipc`, `+Prop`
- - Specific word class `+TA`, `+TI`, `+VI`, `+I`, `+A`
+ - Word class `+TA`, `+TI`, `+VI`, `+I`, `+A`
  - Whether a noun is dependent: `+D`
  - Tense: `+Prs`, `+Fut`, `+Prt` (really, denotes which tense preverb exists)
  - Order: `+Ind`, `+Cnj`
@@ -489,10 +535,25 @@ In the Plains Cree FST, these tags either end with a `+` for prefixes (e.g.,
 
 See this document for more info: https://giellalt.uit.no/lang/crk/crk.html
 
+
+target language
+===============
+[target language]: #target-language
+
+In a unidirectional bilingual dictionary, the language of the definitions.
+
+Example: in *Cree: Words*, which gives a list of Cree [head][] words
+with all [definitions][] being English [translations][], the target
+language is English.
+
+See also: [source language][].
+
+
 translation
 ===========
 
 [translation]: #translation
+[translations]: #translation
 
 A [definition][] written in a different language than the [head][]
 it is defining.
@@ -516,9 +577,6 @@ word class
 ==========
 [word class]: #word-class
 [word classes]: #word-class
-[specific word class]: #word-class
-
-> Also known as **specific word class**
 
 Category of a set of terms that [inflect][] in a similar way. Members of the
 same word class behave morphologically in a similar way to each other.
@@ -552,8 +610,13 @@ These are the word classes in Plains Cree:
 -   VAI: 🧑🏽➡️ — **i**ntransitive **a**nimate **v**erb
 -   VTI: 🧑🏽➡️📘— **t**ransitive **i**nanimate **v**erb
 -   VTA: 🧑🏽➡️🧑🏽— **t**ransitive **i**nanimate **v**erb
--   [Ipc]: [indeclinable particle][]
+-   [Ipc][]
 
+More specific categorizations inside a word class are [inflectional
+categories][] such as NI-1.
+
+> ⚠️  **A deprecated synonym exists** — This was formerly also called a
+> *specific word class*, but that term is now deprecated.
 
 wordform
 ========
@@ -574,12 +637,12 @@ stem
 
 In linguistics, please use the term [root][] instead.
 
-In natural language processing and information retrieval, the stem is
-a potentially garbled form of the input term that aids in indexing
-a large number of related terms. Typically this involves using naïve
-heuristics to remove both [inflectional][] and [derivational][]
-[affixes][] from the input term. The stem does _not_ have to be
-linguistically meaningful, and the stem is often not a valid [wordform].
+In natural language processing and information retrieval, the stem is a
+potentially garbled form of the input term that aids in indexing a large
+number of related terms. Typically this involves using naïve heuristics to
+remove both inflectional and derivational affixes from the input term. The
+stem does _not_ have to be linguistically meaningful, and the stem is often
+not a valid [wordform].
 
 For example, "connection" can be _stemmed_ to "connect" using the [Porter
 stemming algorithm].
@@ -590,3 +653,10 @@ available for every language, and may not be necessary to create
 a satisfactory information retrieval system.
 
 [Porter stemming algorithm]: https://tartarus.org/martin/PorterStemmer/def.txt
+
+term
+====
+[term]: #term
+[terms]: #term
+
+???
