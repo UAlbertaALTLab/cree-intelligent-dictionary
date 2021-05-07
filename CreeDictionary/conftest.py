@@ -5,8 +5,6 @@ from django.conf import settings
 # https://docs.pytest.org/en/stable/fixture.html#conftest-py-sharing-fixtures-across-multiple-files
 from django.core.management import call_command
 
-from API.apps import APIConfig
-
 
 @pytest.fixture(scope="session")
 def django_db_setup(request, django_db_blocker):

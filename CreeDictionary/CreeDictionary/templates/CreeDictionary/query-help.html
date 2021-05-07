@@ -1,49 +1,57 @@
 {% extends 'CreeDictionary/base.html' %}
-
+<!-- -->
 {% load creedictionary_extras %}
-
+<!-- -->
 {% block prose %}
-{% spaceless %}
 <section id="query-help" class="prose box box--spaced">
   <h2 class="prose__section-title">Query help</h2>
-    <h3>Fancy queries</h3>
-    <p>
-        Fancy queries allow power users and developers to make adjustments to how searches work,
-        what is shown, and to preview experimental features.
-    </p>
-    </p>
-        These are all subject to change without notice.
-    </p>
-    <h4>Query types</h4>
-    <dl>
-        <dt>boolean</dt>
-        <dd>Something that can be on or off. Values such as
-            <kbd>on</kbd>, <kdb>yes</kdb>, <kbd>t</kbd>, <kbd>1</kbd>, <a
-            href="https://marshmallow.readthedocs.io/en/stable/marshmallow.fields.html#marshmallow.fields.Boolean.truthy"
-            >and others</a> turn these on; for example, searching for <a
-            href="{% url_for_query 'nicôsâwipakosak auto:1' %}"><kbd
-            >nicôsâwipakosak auto:1</kbd></a> will show auto-translations
-            even if the user is not logged in.
-        </dd>
-    </dl>
-    <h3>Available queries</h3>
-    <dl>
-        <dt>auto: (boolean)</dt>
-        <dd>Show auto-translated definitions</dd>
-    </dl>
-{% if user.is_authenticated %}
-    <h3>Developer queries</h3>
-    <p>
-        These work for all users, but are only visible on the help page to
-        people who are logged in.
-    </p>
-    <dl>
-        <dt>verbose: (boolean)</dt>
-        <dd>Show a JSON dump of available search ranking features</dd>
-    </dl>
-{% endif %}
-  </section>
-{% endspaceless %}
+  <h3>Fancy queries</h3>
+  <p>
+    Fancy queries allow power users and developers to make adjustments to how
+    searches work, what is shown, and to preview experimental features.
+  </p>
+  <p>These are all subject to change without notice.</p>
+  <h4>Query types</h4>
+  <dl>
+    <dt>boolean</dt>
+    <dd>
+      Something that can be on or off. Values such as <kbd>on</kbd>,
+      <kdb>yes</kdb>, <kbd>t</kbd>, <kbd>1</kbd>,
+      <a
+        href="https://marshmallow.readthedocs.io/en/stable/marshmallow.fields.html#marshmallow.fields.Boolean.truthy"
+        >and others</a
+      >
+      turn these on; for example, searching for
+      <a href="{% url_for_query 'nicôsâwipakosak auto:1' %}"
+        ><kbd>nicôsâwipakosak auto:1</kbd></a
+      >
+      will show auto-translations even if the user is not logged in.
+    </dd>
+  </dl>
+  <h3>Available queries</h3>
+  <dl>
+    <dt>auto: (boolean)</dt>
+    <dd>Show auto-translated definitions</dd>
+  </dl>
+  {% if user.is_authenticated %}
+  <h3>Developer queries</h3>
+  <p>
+    These work for all users, but are only visible on the help page to people
+    who are logged in.
+  </p>
+  <dl>
+    <dt>cvd: retrieval|exclusive</dt>
+    <dd>
+        Use cosine vector distances. The <kbd>retrieval</kbd> setting augments search
+        results using cvd lookups but does not adjust ranking; <kbd>exclusive</kbd>
+        shows only cvd-generated results, for test and debugging purposes.
+    </dd>
+
+    <dt>verbose: (boolean)</dt>
+    <dd>Show a JSON dump of available search ranking features</dd>
+  </dl>
+  {% endif %}
+</section>
 {% endblock %}
 
 {# vim: set ft=htmldjango et ts=2 sw=2 sts=2 : #}

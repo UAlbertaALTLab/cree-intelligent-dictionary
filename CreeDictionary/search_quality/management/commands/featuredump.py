@@ -1,7 +1,7 @@
 import json
 import random
 from argparse import ArgumentParser, BooleanOptionalAction
-from contextlib import closing, contextmanager
+from contextlib import contextmanager
 
 import sys
 from django.core.management import BaseCommand
@@ -17,15 +17,18 @@ class Command(BaseCommand):
     help = """Run search queries from survey, dumping JSON of features"""
 
     def add_arguments(self, parser: ArgumentParser):
-        parser.add_argument("--csv-file", default=DEFAULT_SAMPLE_FILE)
-        parser.add_argument(
+        group = parser.add_argument_group("featuredump-specific options")
+        group.add_argument("--csv-file", default=DEFAULT_SAMPLE_FILE)
+        group.add_argument(
             "--prefix-queries-with",
             default="",
             help="String to include in every; see the fancy queries help page for suggestions",
         )
-        parser.add_argument("--max", type=int, help="Only run this many queries")
-        parser.add_argument("--output-file", help="Only run this many queries")
-        parser.add_argument(
+        group.add_argument("--max", type=int, help="Only run this many queries")
+        group.add_argument(
+            "--output-file", help="File to write features to, in JSON format"
+        )
+        group.add_argument(
             "--shuffle",
             action=BooleanOptionalAction,
             help="Shuffle sample before running, useful with --max",
@@ -55,7 +58,7 @@ class Command(BaseCommand):
                 for i, r in enumerate(results):
                     ret = r.features()
                     ret["query"] = query
-                    ret["wordform_text"] = r.wordform.textq
+                    ret["wordform_text"] = r.wordform.text
                     ret["lemma_wordform_text"] = r.wordform.lemma.text
                     ret["definitions"] = [
                         [d.text, ", ".join(c.abbrv for c in d.citations.all())]

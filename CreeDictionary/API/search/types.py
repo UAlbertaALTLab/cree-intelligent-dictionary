@@ -112,7 +112,7 @@ class Result:
 
     def __post_init__(self):
         if all(
-            getattr(self, field.name) == None
+            getattr(self, field.name) in (None, [])
             for field in dataclasses.fields(Result)
             if field.init and field.name != "wordform"
         ):
@@ -144,6 +144,16 @@ class Result:
                 # combine lists, applying uniq
                 if isinstance(self_value, list):
                     self_value[:] = list(set(self_value + other_value))
+                elif (
+                    field_name == "cosine_vector_distance"
+                    and self.cosine_vector_distance is not None
+                    # We already checked that other.cosine_vector_distance is
+                    # not None, but mypy can’t infer that.
+                    and other.cosine_vector_distance is not None
+                ):
+                    self.cosine_vector_distance = min(
+                        self.cosine_vector_distance, other.cosine_vector_distance
+                    )
                 else:
                     setattr(self, field_name, other_value)
 
@@ -172,6 +182,8 @@ class Result:
     did_match_target_language: Optional[bool] = None
 
     morpheme_ranking: Optional[float] = None
+
+    cosine_vector_distance: Optional[float] = None
 
     def features(self):
         ret = {}

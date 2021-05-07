@@ -166,9 +166,14 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GHCR_PERSONAL_ACCESS_TOKEN }}
+    - uses: actions/checkout@v2
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
       with:
+        # build-push-action with the default ‘git context’ ignores the
+        # .dockerignore file
+        # https://github.com/docker/build-push-action/issues/182
+        context: .
         file: docker/Dockerfile
         push: true
         # hopefully this will speed up builds and save disk space by

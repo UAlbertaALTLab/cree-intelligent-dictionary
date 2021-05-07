@@ -21,9 +21,15 @@ services:
       - "9191:9191"
     volumes:
       - "./.env:/app/.env"
+
       # Mount directory, not file, so that -shm and -wal files will be
       # persisted outside the container if using WAL mode
       - "/data_local/application-data/itwewina/db/:/app/CreeDictionary/db/"
+
+      # Mount vector models from git lfs checkout instead of building into
+      # image
+      - "../CreeDictionary/res/vector_models/:/app/CreeDictionary/res/vector_models/"
+
       # Use a persistent path for search sample results, so that they
       # remain across deployments and so that additional sample results can
       # be uploaded from other sources for comparison purposes

@@ -1,4 +1,4 @@
-from argparse import ArgumentParser
+from argparse import ArgumentParser, BooleanOptionalAction
 
 from django.core.management import BaseCommand
 
@@ -15,14 +15,47 @@ class Command(BaseCommand):
     """
 
     def add_arguments(self, parser: ArgumentParser):
-        parser.add_argument("--csv-file", default=DEFAULT_SAMPLE_FILE)
-        parser.add_argument(
-            "--query-results-file", default=RESULTS_DIR / "query-results.json.gz"
+        group = parser.add_argument_group("runsamplequeries option")
+
+        group.add_argument("--csv-file", default=DEFAULT_SAMPLE_FILE)
+        group.add_argument("--max", type=int, help="Only run this many queries")
+        group.add_argument(
+            "--shuffle",
+            action=BooleanOptionalAction,
+            help="Shuffle sample before running, useful with --max",
+        )
+        group.add_argument(
+            "--append-to-query",
+            help="Append string to every query, useful with fancy queries",
+        )
+
+        naming = group.add_mutually_exclusive_group()
+        default_results_file = RESULTS_DIR / "query-results.json.gz"
+        naming.add_argument(
+            "--result-file-path",
+            "--query-results-file",  # legacy name
+            help=f"Full path to write results to, default={default_results_file}",
+            default=default_results_file,
+        )
+        naming.add_argument(
+            "-n", "--result-file-name", help="Base name to use for results file"
         )
 
     def handle(self, *args, **options):
+        if options["result_file_name"]:
+            options["result_file_path"] = RESULTS_DIR / (
+                options["result_file_name"] + ".json.gz"
+            )
+
+        kwargs = {}
+        if options["max"]:
+            kwargs["max"] = options["max"]
+        if options["shuffle"]:
+            kwargs["shuffle"] = True
+        if options["append_to_query"]:
+            kwargs["append_to_query"] = options["append_to_query"]
+
         for status in gen_run_sample(
-            options["csv_file"], out_file=options["query_results_file"]
+            options["csv_file"], out_file=options["result_file_path"], **kwargs
         ):
             self.stdout.write(status)
-        self.stdout.write(f"Output written to {options['query_results_file']}")

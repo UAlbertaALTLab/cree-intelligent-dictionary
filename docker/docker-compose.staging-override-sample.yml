@@ -21,5 +21,5 @@ services:
     image: itwewina:dev
     volumes:
       - "./.env:/app/.env"
-      - "../CreeDictionary/db/:/app/CreeDictionary/db"
+      - "../CreeDictionary/db/:/app/CreeDictionary/db/"
       - "../CreeDictionary/search_quality/sample_results/:/app/CreeDictionary/search_quality/sample_results/"

@@ -5,6 +5,7 @@ from typing import Callable, Any, cast
 
 from utils import get_modified_distance
 from . import core
+from .query import CvdSearchType
 from .types import Result
 from ..models import wordform_cache
 
@@ -52,6 +53,13 @@ def sort_search_result(
         return 1
     else:
         # both from English
+        if (
+            search_run.query.cvd == CvdSearchType.EXCLUSIVE
+            and res_a.cosine_vector_distance is not None
+            and res_b.cosine_vector_distance is not None
+        ):
+            return res_a.cosine_vector_distance - res_b.cosine_vector_distance
+
         a_in_rankings = res_a.wordform.text in wordform_cache.MORPHEME_RANKINGS
         b_in_rankings = res_b.wordform.text in wordform_cache.MORPHEME_RANKINGS
 
