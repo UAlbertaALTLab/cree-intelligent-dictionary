@@ -1,7 +1,7 @@
 FST TAG	LINGUISTIC (SHORT)	LINGUISTIC (LONG)	ENGLISH	NÊHIYAWÊWIN	EMOJI
-12Pl	1p (incl)	Actor: 1st Person Plural (Inclusive)	you and we	kiyânaw	-
-1Pl	1p (excl)	Actor: 1st Person Plural (Exclusive)	we (not you)	niyanân	-
-1PlO	→ 1p (excl)	Goal: 1st Person Plural (Exclusive)	→ you (not us)	→ kiyânaw	-
+12Pl	1p (incl)	Actor: 1st Person Plural (Inclusive)	you and we	kiyânaw	
+1Pl	1p (excl)	Actor: 1st Person Plural (Exclusive)	we (but not you)	niyanân	
+1PlO	→ 1p (excl)	Goal: 1st Person Plural (Exclusive)	→ us (but not you)	→ kiyânaw	
 1Sg	1s	Actor: 1st Person Singular	I	niya -	
 1SgO	→ 1s	Goal: 1st Person Singular	→ me	→ niya -	
 2Pl	2p	Actor: 2nd Person Plural	you (all)	kiyawâw -	
@@ -19,86 +19,90 @@ FST TAG	LINGUISTIC (SHORT)	LINGUISTIC (LONG)	ENGLISH	NÊHIYAWÊWIN	EMOJI
 5Sg/Pl	5	Actor: 3rd Person Singular/Plural (Further Obviative)	s/he/they (further)	wiya/wiyawâw (nâha/nêki) -	
 5Sg/PlO	→ 5	Goal: 3rd Person Singular/Plural (Obviative)	→ him/her/them (further)	→ wiya/wiyawâw (nâha/nêki) -	
 					
-1Sg+2SgO			I → you (one)	niya → kiya	-
-1Sg+3SgO			I → him/her	niya → wiya (awa)	-
-1Sg+1PlO			I → we (not you)	niya → niyanân	-
-1Sg+12PlO			I → you and us	niya → kiyânaw	-
-1Sg+2PlO			I → you (all)	niya → kiyâwaw	-
-1Sg+3PlO			I → them	niya → wiyanaw (ôki)	-
-1Sg+4Sg/PlO			I → him/her/them	niya → wiya/wiyawâw (ana/aniki)	-
-1Sg+5Sg/PlO			I → him/her/them (further)	niya → wiya/wiyawâw (nâha/nêki)	-
+3Sg+I	3s	Actor: 3rd Person Singular (Inanimate)	it	ôma	
+3Pl+I	3s	Actor: 3rd Person Plural (Inanimate)	they	ôhi	
+4Sg+I	4s	Actor: 3rd Person Plural (Obviative) (Inanimate)	it (further)	kîkwaya	
 					
-2Sg+1SgO			you (one) → me	kiya → niya	-
-2Sg+3SgO			you (one) → him/her	kiya → wiya (awa)	-
-2Sg+1PlO			you (one) → we (not you)	kiya → niyanân	-
-2Sg+12PlO			you (one) → you and us	kiya → kiyânaw	-
-2Sg+2PlO			you (one) → you (all)	kiya → kiyâwaw	-
-2Sg+3PlO			you (one) → them	kiya → wiyanaw (ôki)	-
-2Sg+4Sg/PlO			you (one) → him/her/them	kiya → wiya/wiyawâw (ana/aniki)	-
-2Sg+5Sg/PlO			you (one) → him/her/them (further)	kiya → wiya/wiyawâw (nâha/nêki)	-
+1Sg+2SgO			I → you (one)	niya → kiya	
+1Sg+3SgO			I → him/her	niya → wiya (awa)	
+1Sg+1PlO			I → us (but not you)	niya → niyanân	
+1Sg+12PlO			I → you and us	niya → kiyânaw	
+1Sg+2PlO			I → you (all)	niya → kiyâwaw	
+1Sg+3PlO			I → them	niya → wiyanaw (ôki)	
+1Sg+4Sg/PlO			I → him/her/them	niya → wiya/wiyawâw (ana/aniki)	
+1Sg+5Sg/PlO			I → him/her/them (further)	niya → wiya/wiyawâw (nâha/nêki)	
 					
-3Sg+1SgO			s/he → me	wiya → niya	-
-3Sg+2SgO			s/he → you (one)	wiya → kiya	-
-3Sg+1PlO			s/he → we (not you)	wiya → niyanân	-
-3Sg+12PlO			s/he → you and us	wiya → kiyânaw	-
-3Sg+2PlO			s/he → you (all)	wiya → kiyâwaw	-
-3Sg+3PlO			s/he → them	wiya → wiyanaw (ôki)	-
-3Sg+4Sg/PlO			s/he → him/her/them	wiya → wiya/wiyawâw (ana/aniki)	-
-3Sg+5Sg/PlO			s/he → him/her/them (further)	wiya → wiya/wiyawâw (nâha/nêki)	-
+2Sg+1SgO			you (one) → me	kiya → niya	
+2Sg+3SgO			you (one) → him/her	kiya → wiya (awa)	
+2Sg+1PlO			you (one) → us (but not you)	kiya → niyanân	
+2Sg+12PlO			you (one) → you and us	kiya → kiyânaw	
+2Sg+2PlO			you (one) → you (all)	kiya → kiyâwaw	
+2Sg+3PlO			you (one) → them	kiya → wiyanaw (ôki)	
+2Sg+4Sg/PlO			you (one) → him/her/them	kiya → wiya/wiyawâw (ana/aniki)	
+2Sg+5Sg/PlO			you (one) → him/her/them (further)	kiya → wiya/wiyawâw (nâha/nêki)	
 					
-1Pl+1SgO			we → me	niyanân → niya	-
-1Pl+2SgO			we → you (one)	niyanân → kiya	-
-1Pl+3SgO			we → him/her	niyanân → wiya	-
-1Pl+12PlO			we → you and us	niyanân → kiyânaw	-
-1Pl+2PlO			we → you (all)	niyanân → kiyâwaw	-
-1Pl+3PlO			we → them	niyanân → wiyanaw (ôki)	-
-1Pl+4Sg/PlO			we → him/her/them	niyanân → wiya/wiyawâw (ana/aniki)	-
-1Pl+5Sg/PlO			we → him/her/them (further)	niyanân → wiya/wiyawâw (nâha/nêki)	-
+3Sg+1SgO			s/he → me	wiya → niya	
+3Sg+2SgO			s/he → you (one)	wiya → kiya	
+3Sg+1PlO			s/he → us (but not you)	wiya → niyanân	
+3Sg+12PlO			s/he → you and us	wiya → kiyânaw	
+3Sg+2PlO			s/he → you (all)	wiya → kiyâwaw	
+3Sg+3PlO			s/he → them	wiya → wiyanaw (ôki)	
+3Sg+4Sg/PlO			s/he → him/her/them	wiya → wiya/wiyawâw (ana/aniki)	
+3Sg+5Sg/PlO			s/he → him/her/them (further)	wiya → wiya/wiyawâw (nâha/nêki)	
 					
-12Pl+1SgO			you and we → me	kiyânaw → niya	-
-12Pl+2SgO			you and we → you (one)	kiyânaw → kiya	-
-12Pl+3SgO			you and we → him/her	kiyânaw → wiya	-
-12Pl+1PlO			you and we → you and us	kiyânaw → niyanân	-
-12Pl+2PlO			you and we → you (all)	kiyânaw → kiyâwaw	-
-12Pl+3PlO			you and we → them	kiyânaw → wiyanaw (ôki)	-
-12Pl+4Sg/PlO			you and we → him/her/them	kiyânaw → wiya/wiyawâw (ana/aniki)	-
-12Pl+5Sg/PlO			you and we → him/her/them (further)	kiyânaw → wiya/wiyawâw (nâha/nêki)	-
+1Pl+1SgO			we → me	niyanân → niya	
+1Pl+2SgO			we → you (one)	niyanân → kiya	
+1Pl+3SgO			we → him/her	niyanân → wiya	
+1Pl+12PlO			we → you and us	niyanân → kiyânaw	
+1Pl+2PlO			we → you (all)	niyanân → kiyâwaw	
+1Pl+3PlO			we → them	niyanân → wiyanaw (ôki)	
+1Pl+4Sg/PlO			we → him/her/them	niyanân → wiya/wiyawâw (ana/aniki)	
+1Pl+5Sg/PlO			we → him/her/them (further)	niyanân → wiya/wiyawâw (nâha/nêki)	
 					
-2Pl+1SgO			you (all) → me	kiyâwaw → niya	-
-2Pl+2SgO			you (all) → you (one)	kiyâwaw → kiya	-
-2Pl+3SgO			you (all) → him/her	kiyâwaw → wiya	-
-2Pl+1PlO			you (all) → us (not you)	kiyâwaw → niyanân	-
-2Pl+12PlO			you (all) → you and us	kiyâwaw → kiyânaw	-
-2Pl+3PlO			you (all) → them	kiyâwaw → wiyanaw (ôki)	-
-2Pl+4Sg/PlO			you (all) → him/her/them	kiyâwaw → wiya/wiyawâw (ana/aniki)	-
-2Pl+5Sg/PlO			you (all) → him/her/them (further)	kiyâwaw → wiya/wiyawâw (nâha/nêki)	-
+12Pl+1SgO			you and we → me	kiyânaw → niya	
+12Pl+2SgO			you and we → you (one)	kiyânaw → kiya	
+12Pl+3SgO			you and we → him/her	kiyânaw → wiya	
+12Pl+1PlO			you and we → you and us	kiyânaw → niyanân	
+12Pl+2PlO			you and we → you (all)	kiyânaw → kiyâwaw	
+12Pl+3PlO			you and we → them	kiyânaw → wiyanaw (ôki)	
+12Pl+4Sg/PlO			you and we → him/her/them	kiyânaw → wiya/wiyawâw (ana/aniki)	
+12Pl+5Sg/PlO			you and we → him/her/them (further)	kiyânaw → wiya/wiyawâw (nâha/nêki)	
 					
-3Pl+1SgO			they → me	wiyâwaw → niya	-
-3Pl+2SgO			they → you (one)	wiyâwaw → kiya	-
-3Pl+3SgO			they → him/her	wiyâwaw → wiya	-
-3Pl+1PlO			they → us (not you)	wiyâwaw → niyanân	-
-3Pl+12PlO			they → you and us	wiyâwaw → kiyânaw	-
-3Pl+2PlO			they → you (all)	wiyâwaw → kiyâwaw	-
-3Pl+4Sg/PlO			they → him/her/them	wiyâwaw → wiya/wiyawâw (ana/aniki)	-
-3Pl+5Sg/PlO			they → him/her/them (further)	wiyâwaw → wiya/wiyawâw (nâha/nêki)	-
+2Pl+1SgO			you (all) → me	kiyâwaw → niya	
+2Pl+2SgO			you (all) → you (one)	kiyâwaw → kiya	
+2Pl+3SgO			you (all) → him/her	kiyâwaw → wiya	
+2Pl+1PlO			you (all) → us (but not you)	kiyâwaw → niyanân	
+2Pl+12PlO			you (all) → you and us	kiyâwaw → kiyânaw	
+2Pl+3PlO			you (all) → them	kiyâwaw → wiyanaw (ôki)	
+2Pl+4Sg/PlO			you (all) → him/her/them	kiyâwaw → wiya/wiyawâw (ana/aniki)	
+2Pl+5Sg/PlO			you (all) → him/her/them (further)	kiyâwaw → wiya/wiyawâw (nâha/nêki)	
 					
-4Sg/Pl+1SgO			s/he/they → me	wiya/wiyawâw (ana/aniki) → niya	-
-4Sg/Pl+2SgO			s/he/they → you (one)	wiya/wiyawâw (ana/aniki) → kiya	-
-4Sg/Pl+3SgO			s/he/they → him/her	wiya/wiyawâw (ana/aniki) → wiya	-
-4Sg/Pl+1PlO			s/he/they → us (not you)	wiya/wiyawâw (ana/aniki) → niyanân	-
-4Sg/Pl+12PlO			s/he/they → you and us	wiya/wiyawâw (ana/aniki) → kiyânaw	-
-4Sg/Pl+2PlO			s/he/they → you (all)	wiya/wiyawâw (ana/aniki) → kiyâwaw	-
-4Sg/Pl+3PlO			s/he/they → him/her/them	wiya/wiyawâw (ana/aniki) → wiyawâw	-
-4Sg/Pl+5Sg/PlO			s/he/they → him/her/them (further)	wiya/wiyawâw (ana/aniki) → wiya/wiyawâw (nâha/nêki)	-
+3Pl+1SgO			they → me	wiyâwaw → niya	
+3Pl+2SgO			they → you (one)	wiyâwaw → kiya	
+3Pl+3SgO			they → him/her	wiyâwaw → wiya	
+3Pl+1PlO			they → us (but not you)	wiyâwaw → niyanân	
+3Pl+12PlO			they → you and us	wiyâwaw → kiyânaw	
+3Pl+2PlO			they → you (all)	wiyâwaw → kiyâwaw	
+3Pl+4Sg/PlO			they → him/her/them	wiyâwaw → wiya/wiyawâw (ana/aniki)	
+3Pl+5Sg/PlO			they → him/her/them (further)	wiyâwaw → wiya/wiyawâw (nâha/nêki)	
 					
-5Sg/Pl+1SgO			s/he/they (further) → me	wiya/wiyawâw (ana/aniki) → niya	-
-5Sg/Pl+2SgO			s/he/they (further) → you (one)	wiya/wiyawâw (ana/aniki) → kiya	-
-5Sg/Pl+3SgO			s/he/they (further) → him/her	wiya/wiyawâw (ana/aniki) → wiya	-
-5Sg/Pl+1PlO			s/he/they (further) → us (not you)	wiya/wiyawâw (ana/aniki) → niyanân	-
-5Sg/Pl+12PlO			s/he/they (further) → you and us	wiya/wiyawâw (ana/aniki) → kiyânaw	-
-5Sg/Pl+2PlO			s/he/they (further) → you (all)	wiya/wiyawâw (ana/aniki) → kiyâwaw	-
-5Sg/Pl+3PlO			s/he/they (further) → him/her/them	wiya/wiyawâw (ana/aniki) → wiyawâw	-
-5Sg/Pl+4Sg/PlO			s/he/they (further) → him/her/them	wiya/wiyawâw (nâha/nêki) → wiya/wiyawâw (ana/aniki)	-
+4Sg/Pl+1SgO			s/he/they → me	wiya/wiyawâw (ana/aniki) → niya	
+4Sg/Pl+2SgO			s/he/they → you (one)	wiya/wiyawâw (ana/aniki) → kiya	
+4Sg/Pl+3SgO			s/he/they → him/her	wiya/wiyawâw (ana/aniki) → wiya	
+4Sg/Pl+1PlO			s/he/they → us (but not you)	wiya/wiyawâw (ana/aniki) → niyanân	
+4Sg/Pl+12PlO			s/he/they → you and us	wiya/wiyawâw (ana/aniki) → kiyânaw	
+4Sg/Pl+2PlO			s/he/they → you (all)	wiya/wiyawâw (ana/aniki) → kiyâwaw	
+4Sg/Pl+3PlO			s/he/they → him/her/them	wiya/wiyawâw (ana/aniki) → wiyawâw	
+4Sg/Pl+5Sg/PlO			s/he/they → him/her/them (further)	wiya/wiyawâw (ana/aniki) → wiya/wiyawâw (nâha/nêki)	
+					
+5Sg/Pl+1SgO			s/he/they (further) → me	wiya/wiyawâw (ana/aniki) → niya	
+5Sg/Pl+2SgO			s/he/they (further) → you (one)	wiya/wiyawâw (ana/aniki) → kiya	
+5Sg/Pl+3SgO			s/he/they (further) → him/her	wiya/wiyawâw (ana/aniki) → wiya	
+5Sg/Pl+1PlO			s/he/they (further) → us (but not you)	wiya/wiyawâw (ana/aniki) → niyanân	
+5Sg/Pl+12PlO			s/he/they (further) → you and us	wiya/wiyawâw (ana/aniki) → kiyânaw	
+5Sg/Pl+2PlO			s/he/they (further) → you (all)	wiya/wiyawâw (ana/aniki) → kiyâwaw	
+5Sg/Pl+3PlO			s/he/they (further) → him/her/them	wiya/wiyawâw (ana/aniki) → wiyawâw	
+5Sg/Pl+4Sg/PlO			s/he/they (further) → him/her/them	wiya/wiyawâw (nâha/nêki) → wiya/wiyawâw (ana/aniki)	
 					
 A	Animate	Animate	like: asikan, iyiniw, maskwa	tâpiskôc: asikan, iyiniw, maskwa	
 AI		Animate Intransitive	like: mîcisow, nipâw	tâpiskôc: mîcisow, nipâw	
@@ -125,7 +129,7 @@ Err/Orth		(Sub-standard form)
 Foc		Focus			
 Fut	Future	Future tense	something is happening later on	ê-ispayik mwêstas/nîkânihk	
 I		Inanimate	like: cîmân, wâwi	tâpiskôc: cîmân, wâwi	
-IC		Initial change	Initial change	like: wiyâpamât	tâpiskôc: wiyâpamât
+IC	Initial change	Initial change	like: wiyâpamât	tâpiskôc: wiyâpamât	
 II		Inanimate Intransitive	like: miywâsin, mihkwâw	tâpiskôc: miywâsin, mihkwâw	
 INM	Name	Name	like: otôskwanihk	tâpiskôc: otôskwanihk	
 IPC	Particle	Particle	like: anohc	tâpiskôc: anohc	⚡
